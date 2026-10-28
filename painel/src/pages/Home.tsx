@@ -17,7 +17,6 @@ const svgIcone = (d: string) => (
 const ICONES_MODELO: Record<Modelo, ReactNode> = {
   vazio: svgIcone("M12 5v14 M5 12h14"),
   vsl: svgIcone("M4 5h16v11H4z M10 8l5 2.5-5 2.5z M8 20h8"),
-  padrao: svgIcone("M3 5h18v14H3z M3 9h18"),
 };
 
 /** Tela inicial "Seus funis": começar (em branco ou por modelo) e a lista de funis com miniaturas. */

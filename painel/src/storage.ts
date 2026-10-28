@@ -1,6 +1,5 @@
 import type { LeadEdge, EtapaNode } from "./types";
 import type { Evento } from "./filtros";
-import { nosIniciais, setasIniciais } from "./data/funil";
 import { nosVsl, setasVsl } from "./data/funil-vsl";
 import { uid } from "./engine";
 
@@ -8,7 +7,6 @@ import { uid } from "./engine";
 export const MODELOS = {
   vazio: { rotulo: "Funil em branco", descricao: "Comece do zero e monte pela paleta", capa: "", nodes: [] as EtapaNode[], edges: [] as LeadEdge[] },
   vsl: { rotulo: "Funil de vendas (VSL)", descricao: "Anúncios → LP com VSL → pop-up → checkout → jornadas", capa: "vsl", nodes: nosVsl, edges: setasVsl },
-  padrao: { rotulo: "Funil padrão", descricao: "Quiz + Blog → Página inicial → Vendas", capa: "rev", nodes: nosIniciais, edges: setasIniciais },
 } as const;
 export type Modelo = keyof typeof MODELOS;
 
@@ -39,23 +37,13 @@ function normalizar(f: Funil): Funil {
     delete data.thumb;
     return { ...n, type: "etapa" as const, data: { ...data, tipo: data.tipo ?? "pagina" } };
   });
-  let edges = f.edges;
-  // Funil principal ganha o Blog ligado à Página inicial (pedido de 12/09/2026).
-  const temBlog = nodes.some((n) => n.data.url?.includes("/k/blog"));
-  const inicial = nodes.find((n) => n.data.url?.includes("/k/pagina-inicial"));
-  if (f.nome === "Funil principal" && !temBlog && inicial) {
-    const blog = structuredClone(nosIniciais.find((n) => n.id === "blog")!);
-    blog.position = { x: inicial.position.x - 540, y: inicial.position.y + 660 };
-    nodes.push(blog);
-    edges = [...edges, { id: `blog>${inicial.id}`, type: "lead", source: "blog", target: inicial.id, data: { passagens: 0 } }];
-  }
   // Capa pelo nome, para funis criados antes de existir o campo (15/09/2026).
   let capa = f.capa;
   if (capa === undefined) {
     const n = f.nome.toLowerCase();
     capa = n.includes("vsl") ? "vsl" : n.includes("embaixador") ? "pessoas" : n.includes("e-mail") || n.includes("email") ? "email" : n.includes("principal") ? "rev" : "";
   }
-  return { ...f, nodes, edges, capa };
+  return { ...f, nodes, capa };
 }
 
 /** Lê todos os funis; num navegador novo, entrega o Funil VSL pronto uma vez só. */
@@ -67,11 +55,11 @@ export function listarFunis(): Funil[] {
     salvarTodos(funis);
     return funis;
   } catch {
-    return [novoFunil("Funil principal", "Quiz + Blog → Página inicial → Página de vendas")];
+    return [novoFunil("Funil em branco")];
   }
 }
 
-export function novoFunil(nome: string, descricao = "", base?: Pick<Funil, "nodes" | "edges">, modelo: Modelo = "padrao"): Funil {
+export function novoFunil(nome: string, descricao = "", base?: Pick<Funil, "nodes" | "edges">, modelo: Modelo = "vazio"): Funil {
   const agora = Date.now();
   const origem = base ?? MODELOS[modelo];
   return {
