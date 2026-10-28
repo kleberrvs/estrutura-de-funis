@@ -19,7 +19,6 @@ const ICONES_MODELO: Record<Modelo, ReactNode> = {
   vsl: svgIcone("M4 5h16v11H4z M10 8l5 2.5-5 2.5z M8 20h8"),
   embaixador: svgIcone("M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M19 8l2 2-2 2 M17 10h4"),
   emails: svgIcone("M3 6h18v12H3z M3 7l9 6 9-6"),
-  captura: svgIcone("M12 3v12 M7 10l5 5 5-5 M4 19h16"),
   padrao: svgIcone("M3 5h18v14H3z M3 9h18"),
 };
 

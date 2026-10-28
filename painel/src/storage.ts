@@ -4,7 +4,6 @@ import { nosIniciais, setasIniciais } from "./data/funil";
 import { nosVsl, setasVsl } from "./data/funil-vsl";
 import { nosEmbaixador, setasEmbaixador } from "./data/funil-embaixador";
 import { nosEmails, setasEmails } from "./data/funil-emails";
-import { nosCaptura, setasCaptura } from "./data/funil-captura";
 import { uid } from "./engine";
 
 /** Modelos disponíveis ao criar um funil. */
@@ -13,7 +12,6 @@ export const MODELOS = {
   vsl: { rotulo: "Funil de vendas (VSL)", descricao: "Anúncios → LP com VSL → pop-up → checkout → jornadas", capa: "vsl", nodes: nosVsl, edges: setasVsl },
   embaixador: { rotulo: "Funil do Embaixador", descricao: "Convite 1:1 → cadastro → RevCoins → Rév", capa: "pessoas", nodes: nosEmbaixador, edges: setasEmbaixador },
   emails: { rotulo: "Fluxos de E-mail", descricao: "Os 5 fluxos do Customer.io: automáticos, conta, ativação, L1, quiz", capa: "email", nodes: nosEmails, edges: setasEmails },
-  captura: { rotulo: "Funil de Captação", descricao: "Anúncios → Página de captura → e-mail/WhatsApp de boas-vindas → régua → vendas", capa: "", nodes: nosCaptura, edges: setasCaptura },
   padrao: { rotulo: "Funil padrão", descricao: "Quiz + Blog → Página inicial → Vendas", capa: "rev", nodes: nosIniciais, edges: setasIniciais },
 } as const;
 export type Modelo = keyof typeof MODELOS;
@@ -71,7 +69,6 @@ export function listarFunis(): Funil[] {
     if (salvo) return (JSON.parse(salvo) as Funil[]).map(normalizar);
     const funis = [
       { ...novoFunil("Funil do Embaixador", "Convite 1:1 → Página de cadastro → Pop-up → RevCoins → Rév + anúncios/forms → grupo de WhatsApp", undefined, "embaixador"), ordem: 0 },
-      { ...novoFunil("Funil de Captação", "Anúncios → Página de captura → e-mail/WhatsApp de boas-vindas → régua de e-mail → Vendas", undefined, "captura"), ordem: 1 },
       novoFunil("Funil VSL · Plataforma", "Anúncios → LP com VSL → Pop-up → Checkout Hotmart → Boas-vindas + jornadas HSM/e-mail", undefined, "vsl"),
       novoFunil("Fluxos de E-mail", "Os 5 fluxos de e-mail da Revolução (documentação; disparos no Customer.io)", undefined, "emails"),
     ];
