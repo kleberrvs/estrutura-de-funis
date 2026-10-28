@@ -8,8 +8,7 @@ por etapa e um modo demo que simula leads andando pelo funil.
 
 - Não precisa de login nem de instalar nada. Cada pessoa cria os próprios funis, que
   ficam salvos no navegador dela.
-- Já vem com 3 funis prontos (Embaixador, VSL e Fluxos de E-mail) e modelos
-  para começar um funil novo.
+- Já vem com o Funil VSL pronto e modelos para começar um funil novo.
 - As mensagens D1 a D7 do funil VSL são exemplos, para editar.
 
 ## Rodar no computador

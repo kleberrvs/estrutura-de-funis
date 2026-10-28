@@ -2,16 +2,12 @@ import type { LeadEdge, EtapaNode } from "./types";
 import type { Evento } from "./filtros";
 import { nosIniciais, setasIniciais } from "./data/funil";
 import { nosVsl, setasVsl } from "./data/funil-vsl";
-import { nosEmbaixador, setasEmbaixador } from "./data/funil-embaixador";
-import { nosEmails, setasEmails } from "./data/funil-emails";
 import { uid } from "./engine";
 
 /** Modelos disponíveis ao criar um funil. */
 export const MODELOS = {
   vazio: { rotulo: "Funil em branco", descricao: "Comece do zero e monte pela paleta", capa: "", nodes: [] as EtapaNode[], edges: [] as LeadEdge[] },
   vsl: { rotulo: "Funil de vendas (VSL)", descricao: "Anúncios → LP com VSL → pop-up → checkout → jornadas", capa: "vsl", nodes: nosVsl, edges: setasVsl },
-  embaixador: { rotulo: "Funil do Embaixador", descricao: "Convite 1:1 → cadastro → RevCoins → Rév", capa: "pessoas", nodes: nosEmbaixador, edges: setasEmbaixador },
-  emails: { rotulo: "Fluxos de E-mail", descricao: "Os 5 fluxos do Customer.io: automáticos, conta, ativação, L1, quiz", capa: "email", nodes: nosEmails, edges: setasEmails },
   padrao: { rotulo: "Funil padrão", descricao: "Quiz + Blog → Página inicial → Vendas", capa: "rev", nodes: nosIniciais, edges: setasIniciais },
 } as const;
 export type Modelo = keyof typeof MODELOS;
@@ -62,16 +58,12 @@ function normalizar(f: Funil): Funil {
   return { ...f, nodes, edges, capa };
 }
 
-/** Lê todos os funis; num navegador novo, entrega os funis prontos uma vez só. */
+/** Lê todos os funis; num navegador novo, entrega o Funil VSL pronto uma vez só. */
 export function listarFunis(): Funil[] {
   try {
     const salvo = localStorage.getItem(CHAVE);
     if (salvo) return (JSON.parse(salvo) as Funil[]).map(normalizar);
-    const funis = [
-      { ...novoFunil("Funil do Embaixador", "Convite 1:1 → Página de cadastro → Pop-up → RevCoins → Rév + anúncios/forms → grupo de WhatsApp", undefined, "embaixador"), ordem: 0 },
-      novoFunil("Funil VSL · Plataforma", "Anúncios → LP com VSL → Pop-up → Checkout Hotmart → Boas-vindas + jornadas HSM/e-mail", undefined, "vsl"),
-      novoFunil("Fluxos de E-mail", "Os 5 fluxos de e-mail da Revolução (documentação; disparos no Customer.io)", undefined, "emails"),
-    ];
+    const funis = [novoFunil("Funil VSL · Plataforma", "Anúncios → LP com VSL → Pop-up → Checkout Hotmart → Boas-vindas + jornadas HSM/e-mail", undefined, "vsl")];
     salvarTodos(funis);
     return funis;
   } catch {
