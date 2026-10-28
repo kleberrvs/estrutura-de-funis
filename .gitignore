@@ -1,0 +1,11 @@
+node_modules/
+dist/
+cache/
+.env
+.env.*
+*.log
+.DS_Store
+
+# Servidor e skill da Revolução ficam só neste Mac (não vão para o GitHub público)
+servidor/
+skill/
