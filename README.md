@@ -1,10 +1,10 @@
-# Funil ao Vivo
+# Estrutura de Funis
 
 Ferramenta visual para montar funis de marketing: blocos de anúncio, página, pop-up,
 checkout, WhatsApp, e-mail e outros, ligados por setas, com números de entrada e avanço
 por etapa e um modo demo que simula leads andando pelo funil.
 
-**Usar agora:** https://kleberrvs.github.io/funil-ao-vivo/
+**Usar agora:** https://kleberrvs.github.io/estrutura-de-funis/
 
 - Não precisa de login nem de instalar nada. Cada pessoa cria os próprios funis, que
   ficam salvos no navegador dela.
