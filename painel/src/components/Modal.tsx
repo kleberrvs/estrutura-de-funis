@@ -6,10 +6,11 @@ type Props = {
   children: ReactNode;
   rodape: ReactNode;
   onFechar: () => void;
+  largo?: boolean;
 };
 
 /** Janela modal no estilo do painel (fundo escuro, borda, botão laranja). */
-export function Modal({ titulo, subtitulo, children, rodape, onFechar }: Props) {
+export function Modal({ titulo, subtitulo, children, rodape, onFechar, largo }: Props) {
   useEffect(() => {
     const esc = (e: KeyboardEvent) => e.key === "Escape" && onFechar();
     window.addEventListener("keydown", esc);
@@ -18,7 +19,7 @@ export function Modal({ titulo, subtitulo, children, rodape, onFechar }: Props) 
 
   return (
     <div className="modal-fundo" onMouseDown={(e) => e.target === e.currentTarget && onFechar()}>
-      <div className="modal" role="dialog" aria-modal="true" aria-label={titulo}>
+      <div className={`modal${largo ? " largo" : ""}`} role="dialog" aria-modal="true" aria-label={titulo}>
         <header className="modal-cabeca">
           <div>
             <h2>{titulo}</h2>

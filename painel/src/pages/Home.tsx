@@ -59,6 +59,7 @@ export function Home({ abrir }: { abrir: (id: string) => void }) {
             <p>{ativos.length} {ativos.length === 1 ? "funil" : "funis"} · {totais.entraram} leads · <span className="verde">{totais.ativos} ativos agora</span></p>
           </div>
         </div>
+        <nav className="home-nav" aria-label="Áreas"><a href="#/paginas">Páginas</a><a href="#/" className="ativa">Funis</a></nav>
         <div className="home-acoes">
           <button className="btn-primary" onClick={() => setDialogo({ tipo: "criar", modelo: "vazio" })}>+ Novo funil</button>
         </div>

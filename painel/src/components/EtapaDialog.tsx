@@ -4,6 +4,7 @@ import { API, thumbUrl } from "../api";
 import { CANAIS_ANUNCIO, IMAGEM_ANUNCIO_PADRAO, PLATAFORMAS_CHECKOUT, TIPOS } from "../etapas";
 import { LogoPlataforma, plataformaDe } from "../plataformas";
 import type { EtapaData, TipoEtapa } from "../types";
+import { listarPaginas } from "../paginas/storage";
 
 export type DadosEtapa = Omit<EtapaData, "stats" | "thumbVersao">;
 
@@ -123,6 +124,18 @@ export function EtapaDialog({ tipo, inicial, novo, onSalvar, onFechar }: Props) 
       }
     >
       <form id="form-etapa" onSubmit={enviar} className="form">
+        {tipo === "pagina" && (() => {
+          const criadas = listarPaginas().filter((p) => p.url && !p.arquivada);
+          return criadas.length > 0 && (
+            <label>
+              <span>Usar uma página criada aqui <em>(opcional)</em></span>
+              <select value="" onChange={(e) => { const p = criadas.find((x) => x.id === e.target.value); if (p) { mudarUrl(p.url); if (!titulo.trim()) setTitulo(p.nome); } }}>
+                <option value="">Escolher...</option>
+                {criadas.map((p) => <option key={p.id} value={p.id}>{p.nome}</option>)}
+              </select>
+            </label>
+          );
+        })()}
         {campos.urlObrigatoria && (
           <label>
             <span>Endereço (URL)</span>

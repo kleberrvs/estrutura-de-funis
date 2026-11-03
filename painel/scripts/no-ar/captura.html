@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Revolução Concursos — Um time de inteligências artificiais até a sua aprovação</title>
+<link rel="canonical" href="https://revolucao.com.br/k/pagina-de-captura/" />
+<link rel="icon" type="image/png" href="design/revolucao-logo-primary.png" />
+<meta
+  name="description"
+  content="Um time de inteligências artificiais trabalha com você até a aprovação, na Revolução Concursos. No momento da abertura, em outubro, sua assinatura dará acesso a todos os concursos da plataforma."
+/>
+<meta property="og:title" content="Revolução Concursos — Um time de inteligências artificiais até a sua aprovação" />
+<meta
+  property="og:description"
+  content="No momento da abertura, em outubro, sua assinatura dará acesso a todos os concursos da plataforma."
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://revolucao.com.br/k/pagina-de-captura/" />
+<style>
+  @font-face{font-family:"Mundial";src:url("/k/fontes/mundial-regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:"Mundial";src:url("/k/fontes/mundial-demibold.woff2") format("woff2");font-weight:500 600;font-style:normal;font-display:swap}
+  @font-face{font-family:"Mundial";src:url("/k/fontes/mundial-bold.woff2") format("woff2");font-weight:700 800;font-style:normal;font-display:swap}
+  @font-face{font-family:"Mundial";src:url("/k/fontes/mundial-black.woff2") format("woff2");font-weight:900;font-style:normal;font-display:swap}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Mundial','Open Sans',ui-rounded,'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:#0C0514;color:#FAFAFA;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  button{font-family:inherit;cursor:pointer;border:none}
+  :focus-visible{outline:2px solid #BB52ED;outline-offset:3px;border-radius:6px}
+  @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+
+  .logo{height:26px;width:auto;margin:0 auto 22px;display:block}
+
+  /* ═══ Fileira de áreas (cards no mesmo padrão da página de Carreiras do blog) ═══ */
+  .areas{max-width:1100px;margin:0 auto;padding:0 22px 54px;text-align:center}
+  .areas p{font-size:.82rem;color:#8b8194;margin-bottom:16px}
+  .areas-fileira{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;text-align:left}
+  .carr-card{position:relative;aspect-ratio:1/1.28;overflow:hidden;border-radius:1rem;display:block;background:#10071D;box-shadow:0 6px 18px rgba(0,0,0,.35);text-decoration:none}
+  .carr-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s}
+  .carr-card:hover .carr-foto{transform:scale(1.06)}
+  .carr-veu{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,3,15,.93) 0%,rgba(7,3,15,.84) 20%,rgba(7,3,15,.6) 45%,rgba(7,3,15,.28) 72%,rgba(7,3,15,.12) 100%)}
+  .carr-conteudo{position:absolute;inset:0;display:flex;flex-direction:column;padding:1rem;text-align:left}
+  .carr-cabeca{display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem}
+  .carr-ico{display:grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:.45rem;background:linear-gradient(135deg,#FF9A4D,#FD6A18);color:#FFF;box-shadow:0 3px 10px rgba(253,106,24,.45);flex:none}
+  .carr-ico svg{width:1rem;height:1rem}
+  .carr-txt{margin-top:auto}
+  .carr-nome{display:block;font-size:1.1rem;font-weight:800;color:#FFF;line-height:1.2}
+  .carr-desc{display:block;margin-top:.35rem;font-size:.76rem;line-height:1.45;color:rgba(255,255,255,.9)}
+  .carr-saiba{display:inline-flex;align-items:center;gap:.35rem;margin-top:.75rem;padding:.4rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);color:#FFF;font-weight:700;font-size:.76rem;backdrop-filter:blur(4px);transition:background .18s,border-color .18s}
+  .carr-card:hover .carr-saiba{background:#FD6A18;border-color:#FD6A18}
+  @media (max-width:860px){.areas-fileira{grid-template-columns:repeat(2,1fr)}}
+
+  /* ═══ Depoimento ═══ */
+  .prova{max-width:640px;margin:0 auto;padding:0 22px 60px;text-align:center}
+  .prova blockquote{font-size:.98rem;color:#E4D9F5;line-height:1.75;max-width:46ch;margin:0 auto}
+  .prova blockquote strong{color:#FAFAFA}
+  .prova .quem{margin-top:14px;font-size:.78rem;color:#8b8194}
+
+  .rodape{border-top:1px solid rgba(255,255,255,.1);padding:22px;text-align:center;font-size:.74rem;color:#8b8194}
+
+  /* ═══ Mobile: o computador é o protagonista, sem cards soltos colidindo ═══ */
+  @media (max-width:700px){
+    section div[style*="height:500px"] > div[style*="position:absolute"]:not([data-keep]){display:none}
+    section img[alt="Rév"]{width:200px !important}
+    [data-keep] div[style*="grid-template-columns"] > span{min-width:0;overflow-wrap:break-word}
+    .carr-card{aspect-ratio:1/1.55}
+    .carr-desc{font-size:.7rem}
+  }
+</style>
+</head>
+<body>
+
+<section style="position:relative;overflow:hidden;background:radial-gradient(700px 420px at 50% 26%, rgba(145,38,197,0.5), transparent 65%), #0C0514;color:#FAFAFA;padding:56px 32px 0;text-align:center"><span style="position:absolute;top:56px;left:6%;width:70px;height:70px;background-image:radial-gradient(rgba(255,255,255,0.22) 1.5px, transparent 1.5px);background-size:14px 14px" aria-hidden="true"></span><span style="position:absolute;top:40%;right:5%;width:70px;height:70px;background-image:radial-gradient(rgba(255,255,255,0.22) 1.5px, transparent 1.5px);background-size:14px 14px" aria-hidden="true"></span><div style="position:relative;max-width:72rem;margin:0 auto">
+
+<img class="logo" src="design/revolucao-logo-primary.png" alt="Revolução Concursos">
+
+<h1 style="margin:0 auto;max-width:50rem;font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.18;font-weight:800;letter-spacing:-0.02em">Um time de inteligências artificiais trabalha com você até a aprovação, na Revolução Concursos.</h1>
+<p style="margin:16px auto 0;max-width:36rem;font-size:1rem;line-height:1.65;color:#C9BFD6">No momento da abertura, em <strong style="color:#FAFAFA">outubro</strong>, sua assinatura dará acesso a todos os concursos da plataforma.</p>
+
+<form id="form-captura" style="margin:24px auto 0;display:flex;justify-content:center;align-items:stretch;gap:10px;flex-wrap:wrap;max-width:34rem">
+  <input id="campo-email" type="email" required placeholder="Seu melhor e-mail" style="flex:1;min-width:14rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);color:#FFFFFF;font:inherit;font-size:0.95rem;border-radius:999rem;padding:0.9rem 1.4rem">
+  <button type="submit" style="display:inline-flex;align-items:center;gap:8px;background:#158CE6;color:#FFFFFF;font-weight:700;font-size:0.95rem;border:0;border-radius:999rem;padding:0.9rem 1.6rem;cursor:pointer;box-shadow:0 10px 26px rgba(21,140,230,0.4)">Receber oferta em primeira mão</button>
+</form>
+<div id="msg-captura" style="margin-top:14px;font-size:.85rem;color:#5BD98A;font-weight:600;min-height:1.2em"></div>
+<p id="nota-confianca" style="margin-top:2px;font-size:.8rem;color:#8b8194">Sem cartão. Sem compromisso.</p>
+
+<div style="position:relative;margin:30px auto 0;max-width:60rem;height:500px"><span style="position:absolute;left:50%;bottom:70px;transform:translateX(-50%);width:380px;height:380px;border-radius:999rem;background:radial-gradient(circle at 50% 32%, #9126C5 0%, #551277 72%);box-shadow:inset 0 0 0 10px rgba(255,255,255,0.06), 0 30px 70px rgba(16,7,29,0.45)" aria-hidden="true"></span><svg viewBox="0 0 960 500" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"><g style="filter:drop-shadow(0 0 5px #43E6EE)"><circle cx="228" cy="92" r="4.5" fill="#43E6EE"/><path d="M228,92 C300,110 340,140 392,178" fill="none" stroke="#43E6EE" stroke-width="2.6" stroke-dasharray="1 8" stroke-linecap="round"/></g><g style="filter:drop-shadow(0 0 5px #43E6EE)"><circle cx="188" cy="392" r="4.5" fill="#43E6EE"/><path d="M188,392 C270,388 330,362 388,330" fill="none" stroke="#43E6EE" stroke-width="2.6" stroke-dasharray="1 8" stroke-linecap="round"/></g><g style="filter:drop-shadow(0 0 5px #43E6EE)"><circle cx="736" cy="72" r="4.5" fill="#43E6EE"/><path d="M736,72 C660,100 615,135 568,172" fill="none" stroke="#43E6EE" stroke-width="2.6" stroke-dasharray="1 8" stroke-linecap="round"/></g><g style="filter:drop-shadow(0 0 5px #43E6EE)"><circle cx="732" cy="418" r="4.5" fill="#43E6EE"/><path d="M732,418 C655,410 615,378 572,342" fill="none" stroke="#43E6EE" stroke-width="2.6" stroke-dasharray="1 8" stroke-linecap="round"/></g></svg><img src="design/raposa-rosto.webp" alt="Rév" style="position:absolute;left:50%;bottom:250px;transform:translateX(-50%);width:280px;height:auto;object-fit:contain"><div data-keep style="position:absolute;left:50%;bottom:36px;transform:translateX(-50%);width:660px;max-width:96%"><div style="position:relative;margin:0"><div style="background:#0B0B0F;border:1px solid rgba(255,255,255,0.08);border-bottom:0;border-radius:1.4rem 1.4rem 0 0;padding:14px 14px 0;box-shadow:0 34px 90px rgba(145,38,197,0.28)"><div style="position:relative;background:#17121F;border-radius:0.9rem 0.9rem 0 0;padding:34px 22px 22px;overflow:hidden"><span style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:130px;height:15px;background:#0B0B0F;border-radius:0 0 10px 10px"></span><span style="position:absolute;top:4px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:999rem;background:#2E2E38"></span><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px"><span style="background:#211B2A;border:1px solid rgba(255,255,255,0.07);border-radius:0.9rem;padding:20px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#43E6EE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20v-5M11 20V9M16 20v-8M21 20V5" /></svg><span style="font-size:0.74rem;font-weight:600;color:#EDE7F5">Jornada clara</span><span style="font-size:0.62rem;color:#8A8494">de estudos</span></span><span style="background:#211B2A;border:1px solid rgba(255,255,255,0.07);border-radius:0.9rem;padding:20px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#43E6EE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span style="font-size:0.74rem;font-weight:600;color:#EDE7F5">Simulados com IA</span><span style="font-size:0.62rem;color:#8A8494">+3 milhões de questões</span></span><span style="background:#211B2A;border:1px solid rgba(255,255,255,0.07);border-radius:0.9rem;padding:20px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#43E6EE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 6M20 5v6h-6"/></svg><span style="font-size:0.74rem;font-weight:600;color:#EDE7F5">Flashcards automáticos</span><span style="font-size:0.62rem;color:#8A8494">É o Memorize</span></span></div></div></div><div style="height:15px;background:linear-gradient(180deg,#26262C,#101014);border:1px solid rgba(255,255,255,0.08);border-top:0;border-radius:0 0 1.2rem 1.2rem"></div></div></div><div style="position:absolute;left:2%;top:6%;width:220px;background:#17121F;border:1px solid rgba(255,255,255,0.09);border-radius:0.9rem;box-shadow:0 10px 30px rgba(0,0,0,0.4);padding:14px 16px;text-align:left"><strong style="display:block;font-size:0.72rem;margin-bottom:10px;color:#FAFAFA">&#9679; Visão geral</strong><div style="display:flex;align-items:center;gap:12px"><div style="position:relative;width:64px;height:64px;border-radius:999rem;background:conic-gradient(#9126C5 0 40%,#FD6A18 40% 75%,#43E6EE 75% 100%);display:flex;align-items:center;justify-content:center"><span style="width:58%;height:58%;border-radius:999rem;background:#17121F"></span></div><div style="display:flex;flex-direction:column;gap:4px;font-size:0.62rem;color:#9B93A2"><span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#9126C5"></span> Simulados · 40%</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#FD6A18"></span> Revisões · 35%</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#43E6EE"></span> Aulas · 25%</span></div></div></div><div style="position:absolute;right:2%;top:2%;width:200px;background:#17121F;border:1px solid rgba(255,255,255,0.09);border-radius:0.9rem;box-shadow:0 10px 30px rgba(0,0,0,0.4);padding:14px 16px;text-align:left"><strong style="display:block;font-size:0.72rem;margin-bottom:8px;color:#FAFAFA">Desempenho</strong><svg width="150" height="44" viewBox="0 0 150 44" aria-hidden="true"><path d="M0 34 C14 30 20 20 32 22 C44 24 50 12 62 14 C74 16 80 26 92 22 C104 18 110 8 122 10 C134 12 142 18 150 14 L150 44 L0 44 Z" fill="rgba(145,38,197,0.22)"/><path d="M0 34 C14 30 20 20 32 22 C44 24 50 12 62 14 C74 16 80 26 92 22 C104 18 110 8 122 10 C134 12 142 18 150 14" fill="none" stroke="#9126C5" stroke-width="2"/></svg><span style="display:block;margin-top:8px;font-size:0.62rem;color:#9B93A2">Acertos no mês</span><strong style="display:block;font-size:1.2rem;color:#FAFAFA">89% <small style="font-size:0.62rem;color:#16A34A">+12%</small></strong></div></div><div style="border-top:1px solid rgba(255,255,255,0.12);margin-top:0;padding:20px 8px 26px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px"><span style="display:inline-flex;align-items:center;gap:10px;font-size:0.82rem;font-weight:600;color:#FAFAFA"><span style="width:38px;height:38px;border-radius:999rem;background:rgba(187,82,237,0.14);display:inline-flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#BB52ED" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z"/></svg></span>Seguro e confiável</span><span style="display:inline-flex;align-items:center;gap:10px;font-size:0.82rem;font-weight:600;color:#FAFAFA"><span style="width:38px;height:38px;border-radius:999rem;background:rgba(187,82,237,0.14);display:inline-flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#BB52ED" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>Edital sempre atualizado</span><span style="display:inline-flex;align-items:center;gap:10px;font-size:0.82rem;font-weight:600;color:#FAFAFA"><span style="width:38px;height:38px;border-radius:999rem;background:rgba(187,82,237,0.14);display:inline-flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#BB52ED" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15a8 8 0 0 1 16 0"/><path d="M12 15l4-4"/></svg></span>Rápido e sem enrolação</span><span style="display:inline-flex;align-items:center;gap:10px;font-size:0.82rem;font-weight:600;color:#FAFAFA"><span style="width:38px;height:38px;border-radius:999rem;background:rgba(187,82,237,0.14);display:inline-flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#BB52ED" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11"/><path d="M12 11C12 7 9 5 5 5c0 4 3 6 7 6z"/><path d="M12 11c0-4 3-6 7-6 0 4-3 6-7 6z"/></svg></span>Evolui com a sua meta</span></div></div>
+
+</div></section>
+
+<div class="areas">
+  <p>Todos os concursos da plataforma, em qualquer área:</p>
+  <div class="areas-fileira">
+    <a class="carr-card" href="/k/blog/carreira/policial/">
+      <img class="carr-foto" src="design/areas/hero-policial.webp" alt="Policial" loading="lazy">
+      <span class="carr-veu"></span>
+      <span class="carr-conteudo"><span class="carr-txt">
+        <span class="carr-cabeca"><span class="carr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m12 8 1.2 2.4 2.6.4-1.9 1.8.5 2.6L12 14.4l-2.4 1.2.5-2.6-1.9-1.8 2.6-.4z"/></svg></span><span class="carr-nome">Policial</span></span>
+        <span class="carr-desc">Carreiras de segurança pública com estabilidade e boa remuneração. Reúne Polícia Federal, Rodoviária Federal, Civil, Militar e Penal, com vagas abertas o ano todo em todo o país.</span>
+        <span class="carr-saiba">Saiba mais <span aria-hidden="true">→</span></span>
+      </span></span>
+    </a>
+    <a class="carr-card" href="/k/blog/carreira/fiscal/">
+      <img class="carr-foto" src="design/areas/hero-fiscal.webp" alt="Fiscal" loading="lazy">
+      <span class="carr-veu"></span>
+      <span class="carr-conteudo"><span class="carr-txt">
+        <span class="carr-cabeca"><span class="carr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><span class="carr-nome">Fiscal</span></span>
+        <span class="carr-desc">Uma das áreas mais valorizadas do serviço público. Auditores e analistas de Sefaz, Receita e Fazenda cuidam da arrecadação, com salários que passam de R$ 20 mil.</span>
+        <span class="carr-saiba">Saiba mais <span aria-hidden="true">→</span></span>
+      </span></span>
+    </a>
+    <a class="carr-card" href="/k/blog/carreira/tribunais/">
+      <img class="carr-foto" src="design/areas/hero-tribunais.webp" alt="Tribunais" loading="lazy">
+      <span class="carr-veu"></span>
+      <span class="carr-conteudo"><span class="carr-txt">
+        <span class="carr-cabeca"><span class="carr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span><span class="carr-nome">Tribunais</span></span>
+        <span class="carr-desc">O Poder Judiciário abre milhares de vagas para analistas e técnicos. TJs, TRTs, TRFs e TREs oferecem estabilidade, boa estrutura e ótima remuneração inicial.</span>
+        <span class="carr-saiba">Saiba mais <span aria-hidden="true">→</span></span>
+      </span></span>
+    </a>
+    <a class="carr-card" href="/k/blog/carreira/juridico/">
+      <img class="carr-foto" src="design/areas/hero-juridico.webp" alt="Jurídico" loading="lazy">
+      <span class="carr-veu"></span>
+      <span class="carr-conteudo"><span class="carr-txt">
+        <span class="carr-cabeca"><span class="carr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span><span class="carr-nome">Jurídico</span></span>
+        <span class="carr-desc">Para quem é da área do Direito: procuradorias, Ministério Público e Defensoria. Carreiras de prestígio, com alta remuneração e forte impacto na sociedade.</span>
+        <span class="carr-saiba">Saiba mais <span aria-hidden="true">→</span></span>
+      </span></span>
+    </a>
+    <a class="carr-card" href="/k/blog/carreira/educacao/">
+      <img class="carr-foto" src="design/areas/hero-educacao.webp" alt="Educação" loading="lazy">
+      <span class="carr-veu"></span>
+      <span class="carr-conteudo"><span class="carr-txt">
+        <span class="carr-cabeca"><span class="carr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span><span class="carr-nome">Educação</span></span>
+        <span class="carr-desc">Concursos para professores e áreas da educação abrem vagas todos os anos em estados e municípios. Estabilidade, progressão na carreira e jornada que combina com os estudos.</span>
+        <span class="carr-saiba">Saiba mais <span aria-hidden="true">→</span></span>
+      </span></span>
+    </a>
+    <a class="carr-card" href="/k/blog/carreira/militar/">
+      <img class="carr-foto" src="design/areas/hero-militar.webp" alt="Militar" loading="lazy">
+      <span class="carr-veu"></span>
+      <span class="carr-conteudo"><span class="carr-txt">
+        <span class="carr-cabeca"><span class="carr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15.48 12.89 1.51 8.53a.5.5 0 0 1-.81.47l-3.58-2.69a1 1 0 0 0-1.2 0l-3.59 2.69a.5.5 0 0 1-.81-.47l1.51-8.53"/><circle cx="12" cy="8" r="6"/></svg></span><span class="carr-nome">Militar</span></span>
+        <span class="carr-desc">As Forças Armadas (Exército, Marinha e Aeronáutica) formam carreiras sólidas, com plano de carreira, benefícios e a chance de servir ao país desde cedo.</span>
+        <span class="carr-saiba">Saiba mais <span aria-hidden="true">→</span></span>
+      </span></span>
+    </a>
+    <a class="carr-card" href="/k/blog/carreira/saude/">
+      <img class="carr-foto" src="design/areas/hero-saude.webp" alt="Saúde" loading="lazy">
+      <span class="carr-veu"></span>
+      <span class="carr-conteudo"><span class="carr-txt">
+        <span class="carr-cabeca"><span class="carr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.28"/></svg></span><span class="carr-nome">Saúde</span></span>
+        <span class="carr-desc">Enfermeiros, médicos, técnicos e demais profissionais têm um mar de oportunidades em concursos e residências, no SUS e em hospitais de todo o Brasil.</span>
+        <span class="carr-saiba">Saiba mais <span aria-hidden="true">→</span></span>
+      </span></span>
+    </a>
+    <a class="carr-card" href="/k/blog/carreira/ti/">
+      <img class="carr-foto" src="design/areas/hero-ti.webp" alt="TI" loading="lazy">
+      <span class="carr-veu"></span>
+      <span class="carr-conteudo"><span class="carr-txt">
+        <span class="carr-cabeca"><span class="carr-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="carr-nome">TI</span></span>
+        <span class="carr-desc">A tecnologia é uma das áreas que mais cresce no serviço público. Analistas e técnicos de TI são cada vez mais requisitados, com ótimos salários e trabalho valorizado.</span>
+        <span class="carr-saiba">Saiba mais <span aria-hidden="true">→</span></span>
+      </span></span>
+    </a>
+  </div>
+</div>
+
+<div class="prova">
+  <blockquote>Eu estudava sem ordem nenhuma, cada dia numa matéria. Com o edital verticalizado eu fechei os <strong>123 módulos do meu concurso em 4 meses</strong>, estudando antes e depois do trabalho.</blockquote>
+  <div class="quem">Aluna da Revolução · aprovada em 2026</div>
+</div>
+
+<footer class="rodape">Revolução Concursos</footer>
+
+<script data-filtro-robos>
+/* Filtro de robôs do Segment (fonte única: scripts/segment/filtro-robos.js).
+   Robô reconhecido pelo user-agent (ou navegador automatizado) recebe um
+   "analytics" de mentira: o Segment não carrega e nada é enviado, então o robô
+   não vira MTU. Visitante comum segue o fluxo normal. Motivo: 176 mil MTUs de
+   meta-externalagent em set/2026. Lista revisada à mão; NUNCA filtrar nomes
+   genéricos (meta, facebook, google, instagram, chrome): gente real usa. */
+(function (w) {
+  var ROBOS = /meta-external|facebookexternalhit|facebookcatalog|googlebot|google-inspectiontool|googleother|google-extended|google-notebooklm|google-pagerenderer|google web preview|google-read-aloud|google-safety|storebot-google|adsbot-google|mediapartners-google|apis-google|feedfetcher-google|bingbot|bingpreview|adidxbot|msnbot|baiduspider|bytespider|duckduckbot|duckassistbot|yandex(bot|images|renderer)|applebot|petalbot|ahrefsbot|semrushbot|mj12bot|dotbot|seznambot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-user|claude-searchbot|anthropic-ai|perplexitybot|perplexity-user|ccbot|amazonbot|diffbot|ia_archiver|archive\.org_bot|twitterbot|linkedinbot|slackbot|discordbot|telegrambot|pinterestbot|redditbot|headlesschrome|phantomjs|puppeteer|playwright|selenium|chrome-lighthouse|pagespeed|gtmetrix|pingdom|uptimerobot|statuscake|crawler|spider|scrapy|python-requests|curl\/|wget\//i;
+  var robo = false;
+  try {
+    var nav = w.navigator || {};
+    robo = ROBOS.test(String(nav.userAgent || "")) || nav.webdriver === true;
+  } catch (e) {}
+  if (!robo) return;
+  var stub = { initialize: true, initialized: true, invoked: true, robo: true };
+  var comCallback = ["track", "page", "identify", "group", "alias", "screen", "pageview"];
+  var metodos = comCallback.concat(["trackSubmit", "trackClick", "trackLink", "trackForm", "reset", "ready", "debug", "once", "off", "on", "addSourceMiddleware", "addIntegrationMiddleware", "setAnonymousId", "addDestinationMiddleware", "register", "load", "push"]);
+  for (var i = 0; i < metodos.length; i++) {
+    stub[metodos[i]] = (function (nome) {
+      return function () {
+        // Mantém a página funcionando: callback de envio roda como se tivesse enviado.
+        var ultimo = arguments[arguments.length - 1];
+        if (comCallback.indexOf(nome) > -1 && typeof ultimo === "function") setTimeout(ultimo, 0);
+        return stub;
+      };
+    })(metodos[i]);
+  }
+  try {
+    // Trava: outro script (ou um 2º snippet) não consegue trocar por um Segment de verdade.
+    Object.defineProperty(w, "analytics", { get: function () { return stub; }, set: function () {}, configurable: false });
+  } catch (e) {
+    w.analytics = stub;
+  }
+})(window);
+</script>
+<script>
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window.analytics.initialized)return window.analytics[e].apply(window.analytics,arguments);var i=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");i.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}i.unshift(e);analytics.push(i);return analytics}};for(var i=0;i<analytics.methods.length;i++){var key=analytics.methods[i];analytics[key]=analytics.factory(key)}analytics.load=function(key,i){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key","analytics");t.src="https://cdn.segment.com/analytics.js/v1/"+key+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=i};analytics._writeKey="z63f2C4iU4MAoEx3AYrDW8oR53j2gsYH";analytics.SNIPPET_VERSION="5.2.0";analytics.load("z63f2C4iU4MAoEx3AYrDW8oR53j2gsYH");analytics.page({project:"pagina-de-captura"})}}();
+</script>
+<script>
+  document.getElementById('form-captura').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    const email = document.getElementById('campo-email').value.trim().toLowerCase();
+    if (!email) return;
+    const traits = { email: email, project: "pagina-de-captura", origem: "pagina-de-captura" };
+    // ID principal do Segment é o e-mail, mesmo padrão do quiz.
+    window.analytics && window.analytics.identify(email, traits);
+    window.analytics && window.analytics.track("lead.captured", traits);
+    document.getElementById('form-captura').style.display = 'none';
+    document.getElementById('nota-confianca').style.display = 'none';
+    document.getElementById('msg-captura').textContent = 'Prontinho! Você vai receber a oferta em primeira mão.';
+  });
+</script>
+
+</body>
+</html>

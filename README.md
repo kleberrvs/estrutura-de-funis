@@ -23,3 +23,10 @@ Para publicar: `npm run build` gera a pasta `painel/dist`, que é o que vai para
 
 Sem servidor, os blocos de página mostram só o endereço. Com um servidor de miniaturas,
 defina `VITE_FUNIL_API` com o endereço dele antes do `npm run build`.
+
+## Páginas (construtor de páginas)
+
+Além dos funis, o painel tem uma área **Páginas** (`#/paginas`): escolher uma página pronta, editar texto, imagem, cor, vídeo e blocos direto na tela, ver no computador e no celular ao mesmo tempo, e baixar o HTML final.
+
+- As páginas ficam salvas no navegador de quem as criou (como os funis).
+- Os blocos vêm da Vitrine de Páginas da Revolução: `npm run` não é preciso, mas para atualizar a biblioteca rode `python3 painel/scripts/importar-vitrine.py`.

@@ -1,30 +1,46 @@
 import { useEffect, useState } from "react";
 import { Home } from "./pages/Home";
 import { Painel } from "./pages/Painel";
+import { HomePaginas } from "./paginas/HomePaginas";
+import { EditorPagina } from "./paginas/EditorPagina";
+import { lerPagina } from "./paginas/storage";
 import { lerFunil } from "./storage";
 import { aplicarCaixas, caixasAtual } from "./caixas";
 
 aplicarCaixas(caixasAtual());
 
-/** Rota por hash: `#/` é a lista de funis, `#/funil/<id>` abre um painel. */
-function rotaAtual() {
-  const m = window.location.hash.match(/^#\/funil\/([^/?]+)/);
-  return m ? m[1] : null;
+/** Rotas por hash: `#/` lista de funis, `#/funil/<id>` painel, `#/paginas` lista de páginas, `#/pagina/<id>` editor. */
+type Rota = { tela: "funis" } | { tela: "funil"; id: string } | { tela: "paginas" } | { tela: "pagina"; id: string };
+
+function rotaAtual(): Rota {
+  const h = window.location.hash;
+  const funil = h.match(/^#\/funil\/([^/?]+)/);
+  if (funil) return { tela: "funil", id: funil[1] };
+  const pagina = h.match(/^#\/pagina\/([^/?]+)/);
+  if (pagina) return { tela: "pagina", id: pagina[1] };
+  if (h.startsWith("#/paginas")) return { tela: "paginas" };
+  return { tela: "funis" };
 }
 
 export default function App() {
-  const [funilId, setFunilId] = useState<string | null>(rotaAtual);
+  const [rota, setRota] = useState<Rota>(rotaAtual);
   useEffect(() => {
-    const onHash = () => setFunilId(rotaAtual());
+    const onHash = () => setRota(rotaAtual());
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  const abrir = (id: string) => { window.location.hash = `#/funil/${id}`; };
-  const voltar = () => { window.location.hash = "#/"; };
+  const ir = (hash: string) => { window.location.hash = hash; };
 
-  const funil = funilId ? lerFunil(funilId) : undefined;
-  if (funilId && !funil) voltar();
-  if (!funil) return <Home abrir={abrir} />;
-  return <Painel funil={funil} voltar={voltar} />;
+  if (rota.tela === "pagina") {
+    const pagina = lerPagina(rota.id);
+    if (!pagina) { ir("#/paginas"); return null; }
+    return <EditorPagina key={pagina.id} inicial={pagina} voltar={() => ir("#/paginas")} />;
+  }
+  if (rota.tela === "paginas") return <HomePaginas abrir={(id) => ir(`#/pagina/${id}`)} />;
+
+  const funil = rota.tela === "funil" ? lerFunil(rota.id) : undefined;
+  if (rota.tela === "funil" && !funil) ir("#/");
+  if (!funil) return <Home abrir={(id) => ir(`#/funil/${id}`)} />;
+  return <Painel funil={funil} voltar={() => ir("#/")} />;
 }
