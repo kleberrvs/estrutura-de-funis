@@ -2,7 +2,7 @@ const CORES = [
   { v: "#ff6b01", r: "Laranja da Revolução" },
   { v: "#8903bf", r: "Roxo do mentor" },
   { v: "#16071d", r: "Roxo escuro" },
-  { v: "#6baff5", r: "Azul da marca" },
+  { v: "#158ce6", r: "Azul dos botões" },
   { v: "#cc2500", r: "Vermelho" },
 ];
 

@@ -12,6 +12,9 @@ aplicarCaixas(caixasAtual());
 /** Rotas por hash: `#/` lista de funis, `#/funil/<id>` painel, `#/paginas` lista de páginas, `#/pagina/<id>` editor. */
 type Rota = { tela: "funis" } | { tela: "funil"; id: string } | { tela: "paginas" } | { tela: "pagina"; id: string };
 
+/** Versão publicada em /k/paginas/: só o construtor de páginas (sem a área de funis). */
+export const SO_PAGINAS = import.meta.env.VITE_SO_PAGINAS === "1";
+
 function rotaAtual(): Rota {
   const h = window.location.hash;
   const funil = h.match(/^#\/funil\/([^/?]+)/);
@@ -19,7 +22,7 @@ function rotaAtual(): Rota {
   const pagina = h.match(/^#\/pagina\/([^/?]+)/);
   if (pagina) return { tela: "pagina", id: pagina[1] };
   if (h.startsWith("#/paginas")) return { tela: "paginas" };
-  return { tela: "funis" };
+  return SO_PAGINAS ? { tela: "paginas" } : { tela: "funis" };
 }
 
 export default function App() {

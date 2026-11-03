@@ -61,11 +61,22 @@ export function renderModelo(d: Record<string, unknown>, ed: boolean): string {
   }
   let html = serializar(f);
   if (!ed) html = limparMarcas(html);
+  // todos os botões no mesmo padrão da plataforma: cantos de 9px, cor lisa com brilho e sombra leve (a cor continua a de cada botão ou a escolhida)
+  html = html.replace(/<(?:button|a)\b[^>]*style="[^"]*"[^>]*>/gi, (tag) => {
+    const m = tag.match(/style="([^"]*)"/);
+    if (!m || !/padding/.test(m[1]) || !/background/.test(m[1]) || /background:\s*(transparent|none|rgba\(255)/i.test(m[1]) || /width:\s*\d+px;height:\s*\d+px/.test(m[1])) return tag;
+    const decl = m[1].split(";").map((d) => d.trim()).filter(Boolean);
+    const original = decl.find((d) => /^background/i.test(d)) ?? "";
+    const cor = /gradient/i.test(original) ? "#FF6B01" : (original.match(/#[0-9a-fA-F]{6}/)?.[0] ?? "#FF6B01"); // degradê vira a cor lisa da plataforma
+    const resto = decl.filter((d) => !/^(background|border-radius|box-shadow|border|font-weight)\b/i.test(d));
+    const novo = [...resto, `background:linear-gradient(rgba(255,255,255,.14),rgba(255,255,255,0)),${/^#fd6a18$/i.test(cor) ? "#FF6B01" : cor}`, "border:0", "border-radius:9px", `box-shadow:0 4px 12px -4px ${/^#fd6a18$/i.test(cor) ? "#FF6B01" : cor}`, "font-weight:600"].join(";");
+    return tag.replace(/style="[^"]*"/, `style="${novo}"`);
+  });
   // botões com a cor escrita direto neles (azul, verde, roxo...): seguem a cor escolhida; sem escolha, ficam como no modelo
   html = html.replace(/<(?:button|a)\b[^>]*style="[^"]*"[^>]*>/gi, (tag) =>
     /padding/.test(tag)
       ? tag
-          .replace(/background:(#[0-9a-fA-F]{6})/g, (m, c: string) => (/^#FD6A18$/i.test(c) ? m : `background:var(--cor-btn,${c})`))
+          .replace(/background:([^;"]*?)(#[0-9a-fA-F]{6})/g, (m, antes: string, c: string) => (/^#FF6B01$/i.test(c) ? m : `background:${antes}var(--cor-btn,${c})`))
           .replace(/rgba\(21,\s*140,\s*230,\s*0?\.4\)/g, "color-mix(in srgb,var(--cor-btn,#158CE6) 40%,transparent)")
       : tag,
   );
@@ -149,10 +160,12 @@ export function moverItem(html: string, caminho: number[], delta: -1 | 1): strin
 }
 
 /** Imagens de um bloco (inclusive as de fundo, que ficam por baixo do texto e não dá para clicar). */
-export function listarImagens(html: string): { n: string; src: string; nome: string }[] {
+export function listarImagens(html: string): { n: string; src: string; nome: string; fundo: boolean }[] {
   return [...lerFragmento(html).querySelectorAll("img[data-i]")].map((i) => ({
     n: i.getAttribute("data-i")!,
     src: i.getAttribute("src") ?? "",
     nome: (i.getAttribute("alt") || "").trim().slice(0, 28) || (i.classList.contains("hero-photo") ? "Foto de fundo" : "Imagem"),
+    // imagem que fica por baixo do texto (foto de fundo do topo): não dá para clicar nela na página
+    fundo: i.classList.contains("hero-photo") || (/position:\s*absolute/.test(i.getAttribute("style") ?? "") && /inset:\s*0|z-index:\s*-/.test(i.getAttribute("style") ?? "")),
   }));
 }

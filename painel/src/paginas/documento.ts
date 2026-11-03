@@ -12,6 +12,8 @@ const textoSobre = (hex: string) => {
   return 0.299 * r + 0.587 * g + 0.114 * b < 140 ? "#ffffff" : "#221e27";
 };
 const varCor = (p: Pagina) => `:root{--cor:${corValida(p.corBotao) || COR_PADRAO}${corValida(p.corBotao) ? `;--cor-btn:${corValida(p.corBotao)}` : ""}${corValida(p.corFundo) ? `;--bg:${corValida(p.corFundo)}` : ""}}${corValida(p.corFundo) ? `body{color:${textoSobre(corValida(p.corFundo))}}` : ""}`;
+const bodyCls = (p: Pagina) => (corValida(p.corFundo) ? ' class="pg-tudo"' : "");
+
 /** Estilo e classe de um bloco com cor de botão, de fundo e/ou de texto próprias.
  *  Só o fundo trocado: o texto solto muda sozinho para claro ou escuro (cartões e campos mantêm as cores deles).
  *  Cor de texto escolhida: vale para todo o texto da seção. */
@@ -114,9 +116,9 @@ export function documentoFinal(p: Pagina, opc: { videos?: boolean } = {}): strin
     // quiz: uma tela por vez, setas para os lados; clicar num botão da tela vai para a próxima
     const telas = blocos.map((h, i) => `<div class="pg-tela" data-tela="${i}"${i ? " hidden" : ""}>${h}</div>`).join("\n");
     const pontos = blocos.map(() => "<i></i>").join("");
-    return `<!doctype html><html lang="pt-BR"${p.corBotao ? ' class="pg-cor-btn"' : ""}><head>${cabeca(p)}<style>${cssDaPagina(p.blocos)}${CSS_PAGINA}${varCor(p)}${CSS_TELA_CHEIA}${CSS_TELAS}</style></head><body>\n${telas}\n<nav class="pg-telas-nav"><button class="pg-ant" aria-label="Tela anterior">‹</button><span class="pg-pontos">${pontos}</span><button class="pg-prox" aria-label="Próxima tela">›</button></nav>\n<script>${SCRIPT_FINAL(p.slug)}${videos}${SCRIPT_TELAS}</script></body></html>`;
+    return `<!doctype html><html lang="pt-BR"${p.corBotao ? ' class="pg-cor-btn"' : ""}><head>${cabeca(p)}<style>${cssDaPagina(p.blocos)}${CSS_PAGINA}${varCor(p)}${CSS_TELA_CHEIA}${CSS_TELAS}</style></head><body${bodyCls(p)}>\n${telas}\n<nav class="pg-telas-nav"><button class="pg-ant" aria-label="Tela anterior">‹</button><span class="pg-pontos">${pontos}</span><button class="pg-prox" aria-label="Próxima tela">›</button></nav>\n<script>${SCRIPT_FINAL(p.slug)}${videos}${SCRIPT_TELAS}</script></body></html>`;
   }
-  return `<!doctype html><html lang="pt-BR"${p.corBotao ? ' class="pg-cor-btn"' : ""}><head>${cabeca(p)}<style>${cssDaPagina(p.blocos)}${CSS_PAGINA}${varCor(p)}</style></head><body>\n<main id="pg-pagina">${blocos.join("\n")}</main>\n<script>${SCRIPT_FINAL(p.slug)}${videos}${SCRIPT_FUNDO}</script></body></html>`;
+  return `<!doctype html><html lang="pt-BR"${p.corBotao ? ' class="pg-cor-btn"' : ""}><head>${cabeca(p)}<style>${cssDaPagina(p.blocos)}${CSS_PAGINA}${varCor(p)}</style></head><body${bodyCls(p)}>\n<main id="pg-pagina">${blocos.join("\n")}</main>\n<script>${SCRIPT_FINAL(p.slug)}${videos}${SCRIPT_FUNDO}</script></body></html>`;
 }
 
 /** Documento do editor: igual ao final, mais contornos e campos editáveis. */
@@ -127,5 +129,5 @@ export function documentoEditor(p: Pagina, selecionado: string | null): string {
     .map((b) => `<div data-bloco="${b.id}" data-rotulo="${esc(BLOCOS[b.tipo].rotulo)}" class="${[b.id === selecionado ? "sel" : "", estiloBloco(b).classe].join(" ").trim()}"${estiloBloco(b).estilo ? ` style="${estiloBloco(b).estilo}"` : ""}>${BLOCOS[b.tipo].render(b.dados, { ed: true })}</div>`)
     .join("\n");
   const vazio = p.blocos.length ? "" : `<div class="pg-vazio" style="margin:60px 20px">Página vazia. Use "+ Adicionar bloco" no painel da esquerda.</div>`;
-  return `<!doctype html><html lang="pt-BR"${p.corBotao ? ' class="pg-cor-btn"' : ""}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${cssDaPagina(p.blocos)}${CSS_PAGINA}${varCor(p)}${CSS_EDITOR}${p.modo === "telas" ? CSS_TELA_CHEIA : ""}</style></head><body>${corpo}${vazio}<script>${SCRIPT_VIDEOS}</script>${p.modo === "telas" ? "" : `<script>${SCRIPT_FUNDO}</script>`}</body></html>`;
+  return `<!doctype html><html lang="pt-BR"${p.corBotao ? ' class="pg-cor-btn"' : ""}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${cssDaPagina(p.blocos)}${CSS_PAGINA}${varCor(p)}${CSS_EDITOR}${p.modo === "telas" ? CSS_TELA_CHEIA : ""}</style></head><body${bodyCls(p)}>${corpo}${vazio}<script>${SCRIPT_VIDEOS}</script>${p.modo === "telas" ? "" : `<script>${SCRIPT_FUNDO}</script>`}</body></html>`;
 }

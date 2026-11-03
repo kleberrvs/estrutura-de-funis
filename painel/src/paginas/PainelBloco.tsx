@@ -111,6 +111,9 @@ export function PainelBloco({ bloco, corPagina, onTrocarTopo, onMudar, onLista, 
             {temFormulario(html) && (
               <label className="pn-campo"><span>Para onde vai depois de enviar o formulário</span><input value={String(bloco.dados.destino ?? "")} placeholder="Endereço da página de obrigado" onChange={(e) => onMudar("destino", e.target.value, true)} /></label>
             )}
+            {imagens.filter((im) => im.fundo).map((im) => (
+              <button key={`fundo-${im.n}`} type="button" className="btn-primary pn-topo-troca" onClick={() => onImagem(`html-img:${im.n}`)}>Trocar a imagem de fundo do topo</button>
+            ))}
             {imagens.length > 0 && (
               <section className="pn-lista pn-imagens">
                 <h4>Imagens do bloco</h4>

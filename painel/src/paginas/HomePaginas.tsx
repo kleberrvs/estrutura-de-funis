@@ -6,6 +6,7 @@ import { MODELOS_PAGINA, paginaDoExemplo } from "./modelos";
 import { duplicarPagina, listarPaginas, novaPagina, removerPagina, salvarPagina, salvarTodas } from "./storage";
 import { carregarBiblioteca, type Biblioteca } from "./vitrine/biblioteca";
 import { EscolhaPagina } from "./EscolhaPagina";
+import { SO_PAGINAS } from "../App";
 import type { ModeloBase, Pagina } from "./tipos";
 
 const quando = (t: number) => new Date(t).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
@@ -75,7 +76,7 @@ export function HomePaginas({ abrir }: { abrir: (id: string) => void }) {
             <p>{ativas.length} {ativas.length === 1 ? "página" : "páginas"}</p>
           </div>
         </div>
-        <nav className="home-nav" aria-label="Áreas"><a href="#/paginas" className="ativa">Páginas</a><a href="#/">Funis</a></nav>
+        <nav className="home-nav" aria-label="Áreas"><a href="#/paginas" className="ativa">Páginas</a>{!SO_PAGINAS && <a href="#/">Funis</a>}</nav>
         <div className="home-acoes"><button className="btn-primary" onClick={() => setDialogo({ tipo: "tipos" })}>+ Nova página</button></div>
       </header>
 
@@ -111,7 +112,7 @@ export function HomePaginas({ abrir }: { abrir: (id: string) => void }) {
       )}
 
       {dialogo?.tipo === "tipos" && (
-        <Modal largo titulo="Nova página" subtitulo="Escolha uma página para começar. Depois de aberta, você muda o que quiser: textos, imagens, cores, blocos e o topo." onFechar={fechar} rodape={<><button className="btn-secundario rodape-esq" onClick={() => setDialogo({ tipo: "criar", modelo: "branco", modeloNome: "Página em branco" })}>Começar com uma página vazia</button><button className="btn-secundario" onClick={fechar}>Cancelar</button></>}>
+        <Modal largo titulo="Nova página" subtitulo="Escolha uma página para começar. Depois de aberta, você muda o que quiser: textos, imagens, cores, blocos e o topo." onFechar={fechar} rodape={<button className="btn-secundario" onClick={fechar}>Cancelar</button>}>
           <EscolhaPagina bib={bib} onEscolher={(modelo, modeloNome) => setDialogo({ tipo: "criar", modelo, modeloNome })} />
         </Modal>
       )}

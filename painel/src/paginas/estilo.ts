@@ -91,6 +91,8 @@ p{margin:0 0 1em}
 .pg-img-grande{width:100%;border-radius:var(--r-card)}
 .pg-auto{color:var(--ft)}
 .pg-card,.pg-caixa,.pg-det{color:var(--tinta)}
+/* Cor do fundo da página inteira: vale também para as seções que não têm cor própria (as com cor própria vêm depois e vencem) */
+body.pg-tudo :where(body>section,body>header,body>footer,body>main>section,body>main>header,body>main>footer,body>div>section,body>div>header,body>div>footer,body>div>div>section,body>div>div>footer,[data-theme]>section,[data-theme]>header,[data-theme]>footer){background:var(--bg)!important}
 .pg-ct{color:var(--ct)}
 .pg-ct :is(h1,h2,h3,h4,h5,h6,p,li,span,strong,em,b,i,small,blockquote,summary,label,div,figcaption,td,th,a,s,u):not(.pg-btn):not(.pg-btn *):not(button):not(button *):not([style*="var(--cor)"]):not([style*="var(--cor)"] *){color:var(--ct)!important}
 .pg-fundo>section,.pg-fundo>header,.pg-fundo>footer,.pg-fundo>[data-theme],.pg-fundo>[data-theme]>section,.pg-fundo>[data-theme]>header,.pg-fundo>[data-theme]>footer{background:var(--fb)!important}

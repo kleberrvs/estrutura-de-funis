@@ -40,8 +40,8 @@ export const ehTopo = (grupo: string, b: BlocoVitrine) =>
 /** Cria exemplos de página a partir dos grupos que não têm página de exemplo pronta (lista, evento, publicitária e quiz). */
 function completarExemplos(b: Biblioteca): Biblioteca {
   const tem = new Set(b.exemplos.map((e) => e.id));
-  const add = (id: string, grupo: string, nome: string, ids: (string | { id: string; grupo: string })[], tema: Tema = "escuro") => {
-    if (!tem.has(id)) b.exemplos.push({ id, grupo, nome, fundo: "#0C0514", blocos: ids.map((x) => (typeof x === "string" ? { id: x, tema } : { ...x, tema })) });
+  const add = (id: string, grupo: string, nome: string, ids: (string | { id: string; grupo?: string; tema?: Tema })[], tema: Tema = "escuro") => {
+    if (!tem.has(id)) b.exemplos.push({ id, grupo, nome, fundo: "#0C0514", blocos: ids.map((x) => (typeof x === "string" ? { id: x, tema } : { tema, ...x })) });
   };
   // pedido do Kleber (02/11): o exemplo da lista de espera é o topo da raposinha em pé da captura (o do ar hoje), na versão branca
   add("lista-espera-arte", "noar-captura", "Lista de espera", ["noar-captura-01"], "claro");
@@ -51,7 +51,7 @@ function completarExemplos(b: Biblioteca): Biblioteca {
     if (!["lista", "evento", "publicitaria"].includes(g.id)) continue;
     g.blocos.filter((x) => x.rotulo === "Bloco 01" || x.rotulo.startsWith("Opção")).forEach((bl) => {
       add(`${g.id}-${bl.id}`, g.id, `${g.nome} · ${bl.nome}`, // pedido do Kleber (02/11): na página de evento entra, no alto, o topo "Mascote apresentadora" da captura; a segunda dobra (prova social) sai
-      g.id === "evento" && bl.id !== prova?.id ? [{ id: "topo-09", grupo: "captura" }, bl.id] : [bl.id]);
+      g.id === "evento" && bl.id !== prova?.id ? [{ id: "topo-09", grupo: "captura" }, { id: bl.id, tema: "claro" }] : [bl.id]);
     });
   }
   return b;
@@ -60,7 +60,7 @@ function completarExemplos(b: Biblioteca): Biblioteca {
 /** Funções das seções, na ordem em que aparecem na janela de adicionar bloco. */
 export const FUNCOES = [
   "Topo", "Menu", "Dor e posicionamento", "Método e recursos", "Prova social", "Oferta e preços", "Chamada para ação",
-  "Formulário e captura", "Perguntas frequentes", "Garantia", "Obrigado e onboarding", "Quiz", "Vendas policial", "Rodapé", "Outros",
+  "Formulários", "Perguntas frequentes", "Garantia", "Obrigado e onboarding", "Quiz", "Vendas policial", "Rodapé", "Outros",
 ] as const;
 export type Funcao = (typeof FUNCOES)[number];
 
@@ -74,7 +74,7 @@ export function funcaoDe(grupo: string, b: BlocoVitrine): Funcao {
   if (grupo === "vendas-policial") return b.id === "policial-01" ? "Topo" : b.id === "policial-16" ? "Chamada para ação" : "Vendas policial";
   if (b.rotulo.startsWith("Menu")) return "Menu";
   if (n.includes("rodape")) return "Rodapé";
-  if (n.includes("pop-up")) return "Formulário e captura";
+  if (grupo === "formularios" || n.includes("pop-up")) return "Formulários";
   if (n.includes("faq") || n.includes("duvidas")) return "Perguntas frequentes";
   if (n.includes("garantia")) return "Garantia";
   if (n.includes("prova social") || n.includes("depoimentos") || n.includes("time revolucao") || n.includes("quem entra na lista")) return "Prova social";

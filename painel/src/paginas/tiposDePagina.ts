@@ -12,14 +12,15 @@ export function paginasDisponiveis(bib: Biblioteca | null): Item[] {
   const existe = (id: string) => !!bib?.exemplos.some((x) => x.id === id);
   const noAr = (id: string, nome: string, nota: string): Item[] => (existe(id) ? [{ modelo: `vitrine:${id}`, nome, nota }] : []);
   return [
-    { modelo: "basico", nome: "Modelo básico", nota: "Base para qualquer página: topo, benefícios, chamada e rodapé" },
-    ...noAr("noar-vendas", "Página de vendas", "Como está no ar hoje"),
     ...noAr("vendas-policial", "Página de vendas policial", "Página completa"),
+    ...noAr("noar-vendas", "Página de vendas", "Como está no ar hoje"),
     ...noAr("noar-captura", "Página de captura", "Como está no ar hoje"),
     ...noAr("lista-espera-arte", "Lista de espera", "Exemplo da Vitrine: dobra de arte com formulário"),
     ...noAr("evento-ev-topo", "Página de evento", "Exemplo da Vitrine: aula ao vivo"),
     ...noAr("obrigado-exemplo-01", "Página de obrigado", "Exemplo da Vitrine"),
     ...noAr("quiz-telas", "Quiz", "Exemplo da Vitrine: tela inicial e pergunta"),
+    // o modelo básico fica por último
+    { modelo: "basico", nome: "Modelo básico", nota: "Base para qualquer página: topo, benefícios, chamada e rodapé" },
   ];
 }
 
